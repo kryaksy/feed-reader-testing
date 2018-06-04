@@ -86,7 +86,7 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-        it('loading completed', function() {
+        it('has at least one entry element', function() {
 
         });
     });
