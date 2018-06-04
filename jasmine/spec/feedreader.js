@@ -53,7 +53,8 @@ $(function() {
 
     /* TODO: Write a new test suite named "The menu" */
     describe('The menu', function() {
-        var body = $('body')
+        var body = $('body'),
+            menuIcon = $('.menu-icon-link');
         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
          * the CSS to determine how we're performing the
@@ -69,7 +70,10 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
         it('changes visibility when icon is clicked', function() {
-
+            menuIcon.click();
+            expect(body[0].classList.contains('menu-hidden')).toBe(false);
+            menuIcon.click();
+            expect(body[0].classList.contains('menu-hidden')).toBe(true);
         });
     });
 
