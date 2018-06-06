@@ -91,8 +91,8 @@ $(function() {
         });
 
         it('has at least one entry element', function() {
-            expect($('.entry').length).toBeDefined;
-            expect($('.entry').length).toBeGreaterThan(0);
+            expect($('.feed .entry').length).toBeDefined;
+            expect($('.feed .entry').length).toBeGreaterThan(0);
         });
     });
 
