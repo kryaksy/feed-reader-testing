@@ -91,6 +91,7 @@ $(function() {
         });
 
         it('has at least one entry element', function() {
+            expect($('.entry').length).toBeDefined;
             expect($('.entry').length).toBeGreaterThan(0);
         });
     });
@@ -121,18 +122,24 @@ $(function() {
             loadFeed(0);
         })
 
-        it('changes to' + ' List 1', function() {
+        it('changes to' + ' List 1' + ' from List 0', function() {
             newContent = $('.feed').children()[0].innerHTML;
+            expect(newContent).toBeDefined;
+            expect(oldContent).toBeDefined;
             expect(newContent).not.toBe(oldContent);
         });
 
-        it('changes to' + ' List 2', function() {
+        it('changes to' + ' List 2' + ' from List 1', function() {
             newContent = $('.feed').children()[0].innerHTML;
+            expect(newContent).toBeDefined;
+            expect(oldContent).toBeDefined;
             expect(newContent).not.toBe(oldContent);
         });
 
-        it('changes to' + ' List 3', function() {
+        it('changes to' + ' List 3' + ' from List 2', function() {
             newContent = $('.feed').children()[0].innerHTML;
+            expect(newContent).toBeDefined;
+            expect(oldContent).toBeDefined;
             expect(newContent).not.toBe(oldContent);
         });
 
