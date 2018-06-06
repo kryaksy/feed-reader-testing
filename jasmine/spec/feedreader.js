@@ -102,8 +102,39 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-        it('changed content', function() {
+        var oldContent,
+            newContent,
+            id = 1;
 
+
+        beforeEach(function (done) {
+            start = performance.now();
+            oldContent = $('.feed').children()[0].innerHTML;
+            loadFeed(id,done);
         });
+
+        afterEach(function () {
+            id++;          
+        });
+
+        afterAll(function () {
+            loadFeed(0);
+        })
+
+        it('changes to' + ' List 1', function() {
+            newContent = $('.feed').children()[0].innerHTML;
+            expect(newContent).not.toBe(oldContent);
+        });
+
+        it('changes to' + ' List 2', function() {
+            newContent = $('.feed').children()[0].innerHTML;
+            expect(newContent).not.toBe(oldContent);
+        });
+
+        it('changes to' + ' List 3', function() {
+            newContent = $('.feed').children()[0].innerHTML;
+            expect(newContent).not.toBe(oldContent);
+        });
+
     });
 }());
