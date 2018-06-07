@@ -87,51 +87,38 @@ $(function() {
 
         var oldContent,
             newContent,
-            id = 1;
+            temp;
 
-
-        beforeEach(function (done) {
-            start = performance.now();
         /* Test to ensure that the content actually changes when 
          * a new feed is loaded by the loadFeed function.
          * Async Function Test
          */
+         beforeEach(function (done) { // passing Done() as argument
+            temp = Math.floor(Math.random() * (allFeeds.length - 1) + 1);
             oldContent = $('.feed').children()[0].innerHTML;
-            loadFeed(id,done);
+
+            loadFeed(temp,function () {
+                newContent = $('.feed').children()[0].innerHTML;
+                loadFeed((temp-1),function () {
+                    loadFeed(0,done); // Done() finishes async
+                });
+            });
         });
 
-        afterEach(function () {
-            id++;          
-        });
-
-        afterAll(function () {
-            loadFeed(0);
-        })
-
-        it('changes to' + ' List 1' + ' from List 0', function() {
-            newContent = $('.feed').children()[0].innerHTML;
-            expect(newContent).toBeDefined;
-            expect(oldContent).toBeDefined;
-            expect(newContent).not.toBe(oldContent);
-        });
-
-        it('changes to' + ' List 2' + ' from List 1', function() {
-            newContent = $('.feed').children()[0].innerHTML;
         /*  
          * Tries to load feed two times and expect the list
          * to change in both case
          */
+        it('Trial1: changed list', function() {
             expect(newContent).toBeDefined;
             expect(oldContent).toBeDefined;
             expect(newContent).not.toBe(oldContent);
         });
 
-        it('changes to' + ' List 3' + ' from List 2', function() {
-            newContent = $('.feed').children()[0].innerHTML;
+        it('Trial2: changed list', function() {
             expect(newContent).toBeDefined;
             expect(oldContent).toBeDefined;
             expect(newContent).not.toBe(oldContent);
         });
-
     });
 }());
